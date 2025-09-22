@@ -26,7 +26,7 @@ function Index({ setAnimals }) {
   const [numCrias, setNumCrias] = useState("");
   const [imagenSeleccionada, setImagenSeleccionada] = useState("");
 
-  // Cargar animales desde localStorage al iniciar
+  //Se argar animales desde localStorage al iniciar
   useEffect(() => {
     const storedAnimals = localStorage.getItem("animals");
     if (storedAnimals) {

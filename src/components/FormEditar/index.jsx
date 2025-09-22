@@ -6,7 +6,7 @@ function FormEditar({ animal, animals, setAnimals, onClose }) {
   const [color, setColor] = useState(animal.characteristics?.color || "");
   const [location, setLocation] = useState(animal.characteristics?.location || "");
   const [weight, setWeight] = useState(animal.weight || "");
-  const [image, setImage] = useState(animal.image || "");
+  const [image] = useState(animal.image || "");
   const [fileImage, setFileImage] = useState(null); // Nuevo estado para file
   const [birthDate, setBirthDate] = useState(animal.birthDate || "");
   const [numberOfBirths, setNumberOfBirths] = useState(animal.numberOfBirths || "");
