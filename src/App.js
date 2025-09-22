@@ -1,11 +1,11 @@
 import './App.css';
-import fondoGranja from '../src/assets/fondogranja.png';
+
 function App() {
   return (
     <div 
       style={{
         textAlign: 'center',
-        backgroundImage: `url(${fondoGranja})`,
+    
         backgroundSize: 'cover',   
         backgroundPosition: 'center', 
         backgroundRepeat: 'no-repeat',
