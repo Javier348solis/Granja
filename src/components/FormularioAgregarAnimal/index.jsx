@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "../../Styles/FormAddAnimal.css";
 
 function Index({ setAnimals }) {
   const tiposAnimales = ["Vaca", "Cerdo", "Gallina", "Oveja"];

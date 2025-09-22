@@ -1,26 +1,112 @@
 import React from "react";
+import "../../Styles/FichaAnimal.css";
 
+function index({ data }) {
+  console.log("Datos recibidos en FichaAnimal:", data);
 
-function index({data}) {
-    console.log("Datos", data)
-//   const datas = data.datas; //Aqui como estoy utilizano una funcion normal de js que me devuelve react entonces cree esta constante 
- // solo me recorra en el json los datos que voy a necesitar que en este caso son de dataes
+  // Si todavía no hay animal seleccionado
+  if (!data) {
+    return <p>No hay datos disponibles</p>;
+  }
 
   return (
-    <div>  
-      <h1>Lista de dataes</h1>
-      <div style={{display:"flex", gap:"20px"}}>
-      {/* {datas.map((data) => ( //Utilce map para recorra uno por uno y me devuelva los datos que voy a necesitra */}
-        <div key={data.id} className="ficha-data" style={{border:"5px solid blue", padding:"10px", display: "flex", flexWrap:"wrap", gap:"10px", margin:"10px"}}>
-          <h2>{data.type}</h2>
-          <p><strong>Raza:</strong> {data.characteristics.breed}</p>
-          <p><strong>Color:</strong> {data.characteristics.color}</p>
-          <p><strong>Ubicación:</strong> {data.characteristics.location}</p>
-          <p><strong>Peso:</strong> {data.weight} kg</p>
-          {/* <p><strong>Vacunas:</strong> {data.vaccines.map(v => v.name).join(", ")}</p> */}
+    <div
+      className="ficha-data"
+      style={{
+        border: "3px solid blue",
+        padding: "15px",
+        borderRadius: "10px",
+        width: "280px",
+        background: "#f9fafb",
+        margin: "10px",
+      }}
+    >
+      <h2>{data.type}</h2>
+      <p>
+        <strong>Raza:</strong> {data.characteristics?.breed}
+      </p>
+      <p>
+        <strong>Color:</strong> {data.characteristics?.color}
+      </p>
+      <p>
+        <strong>Ubicación:</strong> {data.characteristics?.location}
+      </p>
+      <p>
+        <strong>Peso:</strong> {data.weight} kg
+      </p>
+
+      {/* Imagen */}
+      {data.image && (
+        <img
+          src={data.image}
+          alt={data.type}
+          style={{ width: "100%", borderRadius: "8px" }}
+        />
+      )}
+
+      {/* Vacunas */}
+      {data.vaccines?.length > 0 && (
+        <div>
+          <strong>Vacunas:</strong>
+          <ul>
+            {data.vaccines.map((v, i) => (
+              <li key={i}>
+                {v.name} ({v.date})
+              </li>
+            ))}
+          </ul>
         </div>
-      {/* ))} */}
-      </div>
+      )}
+
+      {/* Tratamientos */}
+      {data.treatments?.length > 0 && (
+        <div>
+          <strong>Tratamientos:</strong>
+          <ul>
+            {data.treatments.map((t, i) => (
+              <li key={i}>
+                {t.name} - {t.description}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {/* Reproducción */}
+      {data.breeding && (
+        <div>
+          <strong>Reproducción:</strong>
+          <p>
+            <strong>Apareado:</strong> {data.breeding.mated ? "Sí" : "No"}
+          </p>
+          {data.breeding.mated && (
+            <p>
+              <strong>Fecha de apareamiento:</strong> {data.breeding.mateDate}
+            </p>
+          )}
+        </div>
+      )}
+
+      {/* Fecha de nacimiento */}
+      {data.birthDate && (
+        <p>
+          <strong>Fecha de nacimiento:</strong> {data.birthDate}
+        </p>
+      )}
+
+      {/* Número de partos */}
+      {data.numberOfBirths !== undefined && (
+        <p>
+          <strong>Número de partos:</strong> {data.numberOfBirths}
+        </p>
+      )}
+
+      {/* Cantidad de crías */}
+      {data.offspringCount !== undefined && (
+        <p>
+          <strong>Cantidad de crías:</strong> {data.offspringCount}
+        </p>
+      )}
     </div>
   );
 }
