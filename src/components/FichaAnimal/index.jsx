@@ -1,7 +1,7 @@
 import React from "react";
 import "../../Styles/FichaAnimal.css";
 
-function index({ data }) {
+function index({ data, animals, setAnimals, onEdit }) {
   console.log("Datos recibidos en FichaAnimal:", data);
 
   // Si todavía no hay animal seleccionado
@@ -35,7 +35,7 @@ function index({ data }) {
         <strong>Peso:</strong> {data.weight} kg
       </p>
 
-      {/* Imagen */}
+
       {data.image && (
         <img
           src={data.image}
@@ -44,7 +44,7 @@ function index({ data }) {
         />
       )}
 
-      {/* Vacunas */}
+     
       {data.vaccines?.length > 0 && (
         <div>
           <strong>Vacunas:</strong>
@@ -107,6 +107,14 @@ function index({ data }) {
           <strong>Cantidad de crías:</strong> {data.offspringCount}
         </p>
       )}
+
+      {/* Botón Editar */}
+      <button
+        onClick={onEdit}
+        style={{ marginTop: "10px", color: "white", background: "blue" }}
+      >
+        Editar
+      </button>
     </div>
   );
 }

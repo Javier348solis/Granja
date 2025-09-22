@@ -4,14 +4,6 @@ import "../../Styles/FormAddAnimal.css";
 function Index({ setAnimals }) {
   const tiposAnimales = ["Vaca", "Cerdo", "Gallina", "Oveja"];
   const ubicaciones = ["Establo A", "Corral B", "Gallinero C"];
- const imagenes = {
-  Vaca: "https://www.google.com/imgres?q=imagenes%20vaca&imgurl=https%3A%2F%2Fimages.vexels.com%2Fmedia%2Fusers%2F3%2F205233%2Fisolated%2Fpreview%2F95a902f2eeb23abf8ea7b1cbd89a8773-ilustracion-del-lado-de-la-vaca.png&imgrefurl=https%3A%2F%2Fes.vexels.com%2Fpng-svg%2Fvista-previa%2F205233%2Filustracion-del-lado-de-la-vaca&docid=69PmeVoYQYIXMM&tbnid=cyLtgWD5ZRyaRM&vet=12ahUKEwiXh-vgpeuPAxVxsoQIHVmtAKsQM3oECHEQAA..i&w=512&h=512&hcb=2&ved=2ahUKEwiXh-vgpeuPAxVxsoQIHVmtAKsQM3oECHEQAA", 
-  Cerdo: "https://www.google.com/imgres?q=IMAGENES%20CERDOS&imgurl=https%3A%2F%2Fmedia.istockphoto.com%2Fid%2F140462837%2Fes%2Ffoto%2Flinda-cerdo-apoyarse-sobre-la-baranda-de-la-cuna.jpg%3Fs%3D612x612%26w%3D0%26k%3D20%26c%3Ds5JWs0NPQiqyVCT1u5qBSYwLDkKzMCXAwtkqakCB8Lc%3D&imgrefurl=https%3A%2F%2Fwww.istockphoto.com%2Fes%2Ffotos%2Fcerdo&docid=MpXRUCHtNlL1eM&tbnid=57OIgoPlMzHe5M&vet=12ahUKEwjLgtGUqOuPAxVUmbAFHQjMANUQM3oECCYQAA..i&w=612&h=408&hcb=2&ved=2ahUKEwjLgtGUqOuPAxVUmbAFHQjMANUQM3oECCYQAA",
-  Gallina: "https://www.google.com/imgres?q=IMAGENES%20GALLINAS&imgurl=https%3A%2F%2Fwww.intagri.com%2Fassets%2Fimages%2Farticulos%2Fcategoria1%2Fganaderia%2Fart102-razas-de-gallinas%2Fgallina-raza.jpg&imgrefurl=https%3A%2F%2Fwww.intagri.com%2Farticulos%2Fganaderia%2Fconoce-las-razas-de-gallina-de-postura&docid=5UGHgutiLIakJM&tbnid=tWaTvwJ3R15i8M&vet=12ahUKEwj_3pimqOuPAxVrVzABHQRGAk8QM3oECBQQAA..i&w=447&h=540&hcb=2&ved=2ahUKEwj_3pimqOuPAxVrVzABHQRGAk8QM3oECBQQAA",
-  Oveja: "https://www.google.com/imgres?q=IMAGENESOVEJAS&imgurl=https%3A%2F%2Fthumbs.dreamstime.com%2Fb%2Fovejas-aisladas-en-el-fondo-blanco-360476135.jpg&imgrefurl=https%3A%2F%2Fes.dreamstime.com%2Fovejas-aisladas-en-fondo-blanco-negras-image239517963&docid=LpAU30jzM6tAFM&tbnid=vsWcQQnyxOPulM&vet=12ahUKEwi2kOyyqOuPAxXsQzABHUdSAP4QM3oECB4QAA..i&w=800&h=800&hcb=2&ved=2ahUKEwi2kOyyqOuPAxXsQzABHUdSAP4QM3oECB4QAA",
-};
-
-
 
   const [tipos, setTipos] = useState("");
   const [raza, setRaza] = useState("");
@@ -268,21 +260,24 @@ function Index({ setAnimals }) {
           placeholder="Cantidad crías"
         />
 
-        {/* Imagen */}
-        <select
-          value={imagenSeleccionada}
-          onChange={(e) => setImagenSeleccionada(e.target.value)}
-        >
-          <option value="">Seleccionar imagen</option>
-          {Object.entries(imagenes).map(([tipo, url]) => (
-            <option key={tipo} value={url}>
-              {tipo}
-            </option>
-          ))}
-        </select>
+        {/* Imagen desde dispositivo */}
+        <input
+          type="file"
+          accept="image/*"
+          onChange={(e) => {
+            const file = e.target.files[0];
+            if (file) {
+              const reader = new FileReader();
+              reader.onloadend = () => {
+                setImagenSeleccionada(reader.result);
+              };
+              reader.readAsDataURL(file);
+            }
+          }}
+        />
         {imagenSeleccionada && (
           <div>
-            <img src={imagenSeleccionada} alt="animal" width="120" />
+            <img src={imagenSeleccionada} alt="preview" width="120" />
           </div>
         )}
 

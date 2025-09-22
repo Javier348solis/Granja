@@ -3,6 +3,7 @@ import Encabezado from "../../components/Encabezado/index";
 import data from "../../components/json/animales.json";
 import FichaAnimal from "../../components/FichaAnimal/index";
 import FormularioAgregarAnimal from "../../components/FormularioAgregarAnimal/index";
+import FormEditar from "../../components/FormEditar/index"; // <-- agregado
 
 const Index = () => {
   // Cargar primero desde localStorage o usar el JSON si no hay nada guardado
@@ -12,6 +13,10 @@ const Index = () => {
   });
 
   const [currentIndex, setCurrentIndex] = useState(0);
+
+  // Nuevo estado para edición
+  const [editing, setEditing] = useState(false);
+  const [selectedAnimal, setSelectedAnimal] = useState(null);
 
   // Cada vez que cambien los animales, actualizamos el localStorage
   useEffect(() => {
@@ -43,7 +48,15 @@ const Index = () => {
 
       {animals && animals.length > 0 ? (
         <>
-          <FichaAnimal data={animals[currentIndex]} />
+          <FichaAnimal
+            data={animals[currentIndex]}
+            animals={animals}
+            setAnimals={setAnimals}
+            onEdit={() => {
+              setSelectedAnimal(animals[currentIndex]);
+              setEditing(true);
+            }}
+          />
           <button onClick={handleNext} style={{ marginTop: "20px" }}>
             Siguiente
           </button>
@@ -58,7 +71,17 @@ const Index = () => {
         </p>
       )}
 
-      {/* Aqui lo quie se hace es que se muestre el form inclusi si la lista esta vacia */}
+      {/* Formulario de edición */}
+      {editing && selectedAnimal && (
+        <FormEditar
+          animal={selectedAnimal}
+          animals={animals}
+          setAnimals={setAnimals}
+          onClose={() => setEditing(false)}
+        />
+      )}
+
+      {/* Formulario para agregar */}
       <FormularioAgregarAnimal setAnimals={setAnimals} />
     </div>
   );
