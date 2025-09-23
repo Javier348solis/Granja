@@ -28,6 +28,11 @@ const Navbar = () => {
   const toggleDarkMode = () => setDarkMode(!darkMode);
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
+  const handleLogout = () => {
+    localStorage.removeItem("loggedInUser");
+    navigate("/login");
+  };
+
   return (
     <nav className={`navbar ${darkMode ? "dark" : "light"}`}>
       <div className="navbar-brand">
@@ -74,6 +79,14 @@ const Navbar = () => {
               Registro
             </Link>
           </>
+        )}
+        {loggedInUser && (
+          <button
+            className="navbar-logout"
+            onClick={handleLogout}
+          >
+            Cerrar Sesión
+          </button>
         )}
         <button
           className="navbar-toggle mobile-toggle"

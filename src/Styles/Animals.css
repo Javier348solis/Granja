@@ -2,23 +2,25 @@
   background: radial-gradient(circle at top left, #0f2027, #203a43, #2c5364);
   min-height: 100vh;
   padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .animals-title {
-  display: flex;
-  justify-content: center;
   font-size: 3rem;
   font-weight: 900;
   letter-spacing: 4px;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   position: relative;
   color: #00ffe6;
   text-transform: uppercase;
   background: linear-gradient(90deg, #00e6ff, #00ff85, #ff00ff, #ff0055);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: animateGradient 5s linear infinite;
+  animation: slideAndFade 6s infinite ease-in-out;
 }
+
 .animals-title::after {
   content: "";
   position: absolute;
@@ -32,6 +34,15 @@
   z-index: -1;
   animation: animateGradient 5s linear infinite;
 }
+
+.animals-subtitle {
+  font-size: 1.2rem;
+  color: #e0e0e0;
+  margin-bottom: 40px;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+  animation: fadeInOut 5s infinite ease-in-out;
+}
+
 .carousel {
   display: flex;
   overflow: hidden;
@@ -52,7 +63,7 @@
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   padding: 20px;
   width: 300px;
-  overflow: visible; /* 🔹 evita cortar listas */
+  overflow: visible;
 }
 
 .carousel-card.active {
@@ -74,7 +85,48 @@
   .carousel-card {
     margin: 10px 0;
   }
+  .animals-title {
+    font-size: 2rem;
+  }
+  .animals-subtitle {
+    font-size: 1rem;
+  }
 }
+
+@keyframes slideAndFade {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  20% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  80% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 @keyframes animateGradient {
   0% {
     background-position: 0% 50%;
@@ -86,6 +138,7 @@
     background-position: 0% 50%;
   }
 }
+
 .no-animals {
   text-align: center;
   color: #666;

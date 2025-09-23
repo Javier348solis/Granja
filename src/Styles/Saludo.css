@@ -1,17 +1,16 @@
 .saludo-container {
-  min-height: 100vh;
+  min-height: 40vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(135deg, #1a2a44, #0d1b2c);
-  
+ 
   overflow: hidden;
 }
 
 .saludo-container h1 {
   font-size: 3rem;
-  font-weight: 900;
+ 
   color: #ffffff;
   text-transform: uppercase;
   letter-spacing: 4px;

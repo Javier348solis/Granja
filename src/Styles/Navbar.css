@@ -55,6 +55,7 @@
   border-radius: 6px;
   color: var(--text-color) !important;
   transition: all 0.3s ease;
+  animation: bounceUpDown 3s infinite ease-in-out;
 }
 
 .navbar-link:hover {
@@ -77,6 +78,28 @@
 
 .navbar-toggle:hover {
   transform: translateY(-2px);
+}
+
+/* Logout Button */
+.navbar-logout {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  background: linear-gradient(90deg, #ff4e50, #f9d423);
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 78, 80, 0.4);
+}
+
+.navbar-logout:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 6px 20px rgba(255, 78, 80, 0.6);
+  background: linear-gradient(90deg, #f9d423, #ff4e50);
 }
 
 /* Hamburger Menu */
@@ -165,6 +188,11 @@ html {
     margin-top: 8px;
   }
 
+  .navbar-logout {
+    width: 100%;
+    margin-top: 8px;
+  }
+
   .navbar-toggle.desktop-toggle {
     display: none;
   }
@@ -177,5 +205,22 @@ html {
 
   .navbar-toggle.desktop-toggle {
     display: block;
+  }
+
+  .navbar-logout {
+    margin-left: 10px;
+  }
+}
+
+/* Animación para Inicio y Animales */
+@keyframes bounceUpDown {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
   }
 }

@@ -47,6 +47,7 @@ const Animals = () => {
   return (
     <div className="animals-container">
       <h1 className="animals-title">Animales</h1>
+      <p className="animals-subtitle">Datos de los animales agregados</p>
       {animals.length > 0 ? (
         <div className="carousel">
           {visibleAnimals.map((animal) => (

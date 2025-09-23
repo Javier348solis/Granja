@@ -37,27 +37,7 @@ Aplicación en **React.js** para gestionar animales de una granja con funcionali
 
 ---
 
-## 📂 Estructura de Carpetas
-src
-├── assets
-│ └── logo granja.png
-├── components
-│ ├── Encabezado/
-│ ├── FichaAnimal/
-│ ├── FormEditar/
-│ ├── FormularioAgregarAnimal/
-│ ├── json/animales.json
-│ └── Navbar/
-├── containers
-│ ├── Animals/
-│ ├── Home/
-│ ├── Login/
-│ └── Registro/
-├── routes/
-├── services/
-├── Styles/
-├── App.js
-├── index.js
+
 ## ⚙️ Instalación y Ejecución
 
 1. **Clonar el repositorio**

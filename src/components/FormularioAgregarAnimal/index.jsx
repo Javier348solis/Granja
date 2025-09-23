@@ -59,61 +59,65 @@ function Index({ setAnimals }) {
       setTratDesc("");
     }
   };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const newAnimal = {
-      id: Date.now(),
-      type: tipos,
-      image: imagenSeleccionada,
-      characteristics: {
-        breed: raza,
-        color: color,
-        location: ubicacion,
-      },
-      feeding: {
-        schedule: alimentacionHorario,
-        amount: alimentacionCantidad,
-      },
-      hydration: {
-        dailyLevel: hidratacion,
-      },
-      weight: parseFloat(peso) || 0,
-      vaccines: vacunas,
-      treatments: tratamientos,
-      breeding: {
-        mated: reproduccion,
-        mateDate: reproduccion ? fechaApareo : null,
-      },
-      birthDate: fechaNacimiento,
-      numberOfBirths: parseInt(numPartos) || 0,
-      offspringCount: parseInt(numCrias) || 0,
-    };
-
-    setAnimals((prev) => {
-      const updated = [...prev, newAnimal];
-      saveToLocalStorage(updated); // Guardar en localStorage
-      return updated;
-    });
-
-    // limpiar formulario
-    setTipos("");
-    setRaza("");
-    setColor("");
-    setUbicacion("");
-    setPeso("");
-    setAlimentacionHorario("");
-    setAlimentacionCantidad("");
-    setHidratacion("");
-    setVacunas([]);
-    setTratamientos([]);
-    setReproduccion(false);
-    setFechaApareo("");
-    setFechaNacimiento("");
-    setNumPartos("");
-    setNumCrias("");
-    setImagenSeleccionada("");
+const handleSubmit = (e) => {
+  e.preventDefault();
+  alert("Animal agregado correctamente!");
+  const newAnimal = {
+    id: Date.now(),
+    type: tipos,
+    image: imagenSeleccionada,
+    characteristics: {
+      breed: raza,
+      color: color,
+      location: ubicacion,
+    },
+    feeding: {
+      schedule: alimentacionHorario,
+      amount: alimentacionCantidad,
+    },
+    hydration: {
+      dailyLevel: hidratacion,
+    },
+    weight: parseFloat(peso) || 0,
+    vaccines: vacunas,
+    treatments: tratamientos,
+    breeding: {
+      mated: reproduccion,
+      mateDate: reproduccion ? fechaApareo : null,
+    },
+    birthDate: fechaNacimiento,
+    numberOfBirths: parseInt(numPartos) || 0,
+    offspringCount: parseInt(numCrias) || 0,
   };
+
+  setAnimals((prev) => {
+    const updated = [...prev, newAnimal];
+    saveToLocalStorage(updated); // Guardar en localStorage
+
+    // 🔎 Mostrar en consola lo que se guardó
+    console.log("Animales en localStorage:", JSON.parse(localStorage.getItem("animals")));
+
+    return updated;
+  });
+
+  // limpiar formulario
+  setTipos("");
+  setRaza("");
+  setColor("");
+  setUbicacion("");
+  setPeso("");
+  setAlimentacionHorario("");
+  setAlimentacionCantidad("");
+  setHidratacion("");
+  setVacunas([]);
+  setTratamientos([]);
+  setReproduccion(false);
+  setFechaApareo("");
+  setFechaNacimiento("");
+  setNumPartos("");
+  setNumCrias("");
+  setImagenSeleccionada("");
+}
 
   return (
     <div>
