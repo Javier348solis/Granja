@@ -9,10 +9,10 @@ Aplicación en **React.js** para gestionar animales de una granja con funcionali
 - **Academia:** AcademyCoder.com  
 - **Curso:** Bootcamp Intensivo de React.js - De Principiante a Profesional  
 - **Proyecto:** FarmManager (Gestión de Animales en una Granja)  
-- **Estudiantes:** Javier y Naomy  
-- **Instructor:** Jean Pierre Barnett  
-- **Fecha de Asignación:** 19 de septiembre de 2025  
-- **Fecha de Entrega:** 22 de septiembre de 2025  
+- **Estudiantes:** Javier Solís y Naomy Sandí.
+- **Instructor:** Jean Pierre Barnett. 
+- **Fecha de Asignación:** 19 de septiembre de 2025. 
+- **Fecha de Entrega:** 22 de septiembre de 2025.  
 
 ---
 
@@ -58,3 +58,17 @@ src
 ├── Styles/
 ├── App.js
 ├── index.js
+## ⚙️ Instalación y Ejecución
+
+1. **Clonar el repositorio**
+   ```bash
+   git clone <https://github.com/Javier348solis/Granja.git>
+   cd granja
+2.  ***Instalar dependencias**
+- npm install
+3. **Instalar React Router DOM**
+- npm install react-router-dom
+4. **Instalar json-server**
+- npm install -g json-server
+5. **Ejecutar la aplicación en React**
+- npm start

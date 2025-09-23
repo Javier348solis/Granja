@@ -45,27 +45,39 @@
 }
 
 .ficha-body ul {
+  list-style: disc;
   padding-left: 20px;
   margin: 8px 0;
+  color: #f6f2f2; /* 🔹 fuerza color texto */
+}
+
+.ficha-body ul li {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 6px 10px;
+  border-radius: 6px;
+  margin-bottom: 5px;
+  font-size: 0.95rem;
+  color: #fff; /* 🔹 fuerza color texto */
 }
 
 /* 🔥 Fix para que se vean inputs y textareas */
 .ficha-body input,
 .ficha-body textarea {
+  all: unset;              
   width: 100%;
   padding: 6px 10px;
   margin-top: 5px;
   border: 1px solid rgba(255, 255, 255, 0.4);
   border-radius: 6px;
   background-color: rgba(0, 0, 0, 0.2);
-  color: #fff;
+  color: #fff !important;
   font-size: 0.95rem;
-  resize: none;
+  display: block;
 }
 
 .ficha-body input::placeholder,
 .ficha-body textarea::placeholder {
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(255, 255, 255, 0.7) !important;
 }
 
 .ficha-body input:focus,
