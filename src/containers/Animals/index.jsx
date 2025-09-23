@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from "react";
 import "../../Styles/Animals.css";
-import data from "../../components/json/animales.json";
-import FichaAnimal from "../../components/FichaAnimal/index";
-import FormEditar from "../../components/FormEditar/index";
+import FichaAnimal from "../../components/FichaAnimal";
+import FormEditar from "../../components/FormEditar";
 
 const Animals = () => {
   const [animals, setAnimals] = useState(() => {
     const saved = localStorage.getItem("animals");
-    return saved ? JSON.parse(saved) : data.animals;
+    return saved ? JSON.parse(saved) : [];
   });
-
   const [currentIndex, setCurrentIndex] = useState(0);
   const [editing, setEditing] = useState(false);
   const [selectedAnimal, setSelectedAnimal] = useState(null);
@@ -17,7 +15,7 @@ const Animals = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) =>
-        prevIndex < animals.length - 1 ? prevIndex + 1 : 0
+        animals.length > 0 ? (prevIndex + 3) % animals.length : 0
       );
     }, 5000);
     return () => clearInterval(interval);
@@ -32,34 +30,46 @@ const Animals = () => {
     setEditing(true);
   };
 
-  const handleCloseForm = () => {
-    setEditing(false);
-    setSelectedAnimal(null);
+  const handleDelete = (id) => {
+    const updatedAnimals = animals.filter((animal) => animal.id !== id);
+    setAnimals(updatedAnimals);
+    localStorage.setItem("animals", JSON.stringify(updatedAnimals));
   };
+
+  const visibleAnimals =
+    animals.length > 0
+      ? Array.from({ length: Math.min(3, animals.length) }, (_, i) => {
+          const index = (currentIndex + i) % animals.length;
+          return animals[index];
+        })
+      : [];
 
   return (
     <div className="animals-container">
-      <h1>Animales</h1>
-
-      {animals && animals.length > 0 ? (
+      <h1 className="animals-title">Animales</h1>
+      {animals.length > 0 ? (
         <div className="carousel">
-          <FichaAnimal
-            data={animals[currentIndex]}
-            animals={animals}
-            setAnimals={setAnimals}
-            onEdit={() => handleEdit(animals[currentIndex])}
-          />
+          {visibleAnimals.map((animal) => (
+            <FichaAnimal
+              key={animal.id}
+              data={animal}
+              onEdit={() => handleEdit(animal)}
+              onDelete={() => handleDelete(animal.id)}
+            />
+          ))}
         </div>
       ) : (
-        <p>No hay animales para mostrar</p>
+        <p className="no-animals">No hay animales para mostrar</p>
       )}
-
       {editing && selectedAnimal && (
         <FormEditar
           animal={selectedAnimal}
           animals={animals}
           setAnimals={setAnimals}
-          onClose={handleCloseForm}
+          onClose={() => {
+            setEditing(false);
+            setSelectedAnimal(null);
+          }}
         />
       )}
     </div>

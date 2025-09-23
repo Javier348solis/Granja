@@ -48,13 +48,13 @@ const Register = () => {
           marginBottom: '20px',
           fontSize: '24px',
           color: '#333'
-        }}>Registro</h2>
+        }}>Registrarse</h2>
 
         <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
           <input 
             value={username} 
             onChange={(e) => setUsername(e.target.value)} 
-            placeholder="Username" 
+            placeholder="Usuario" 
             required 
             style={{
               padding: '12px',
@@ -71,7 +71,7 @@ const Register = () => {
             type="password" 
             value={password} 
             onChange={(e) => setPassword(e.target.value)} 
-            placeholder="Password" 
+            placeholder="Contraseña" 
             required 
             style={{
               padding: '12px',
@@ -103,7 +103,7 @@ const Register = () => {
             Registrarse
           </button>
           <p style={{ fontSize: '14px', marginTop: '10px' }}>
-            O<a href="/login" style={{ color: '#667eea', textDecoration: 'none', fontWeight: 'bold' }}>Inicia sesión</a>
+            O <a href="/login" style={{ color: '#667eea', textDecoration: 'none', fontWeight: 'bold' }}>Inicia sesión</a>
           </p>
         </form>
         {error && <p style={{ color: 'red', marginTop: '15px' }}>{error}</p>}

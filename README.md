@@ -1,70 +1,60 @@
-# Getting Started with Create React App
+# 🐄 FarmManager - Gestión de Animales en una Granja
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Proyecto final del **Bootcamp Intensivo de React.js** (AcademyCoder.com).  
+Aplicación en **React.js** para gestionar animales de una granja con funcionalidades **CRUD** (Crear, Leer, Actualizar y Eliminar).
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 📋 Información del Proyecto
+- **Academia:** AcademyCoder.com  
+- **Curso:** Bootcamp Intensivo de React.js - De Principiante a Profesional  
+- **Proyecto:** FarmManager (Gestión de Animales en una Granja)  
+- **Estudiantes:** Javier y Naomy  
+- **Instructor:** Jean Pierre Barnett  
+- **Fecha de Asignación:** 19 de septiembre de 2025  
+- **Fecha de Entrega:** 22 de septiembre de 2025  
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 🚀 Funcionalidades
+- **Create:** formulario para agregar animales con todos los campos del JSON.  
+- **Read:** visualización de animales en cards con detalles e imágenes.  
+- **Update:** edición de datos mediante formulario/modal prellenado.  
+- **Delete:** eliminación de animales de la lista.  
+- **Extras:**  
+  - Dropdowns para tipos de animales y ubicaciones.  
+  - Selección de imágenes por animal.  
+  - Navbar con logo que enlaza a la pantalla principal.  
+  - Validaciones de formularios y renderizado condicional.  
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## 🛠️ Tecnologías Usadas
+- **React.js** (componentes funcionales, hooks, props, estado)  
+- **React Router DOM** (navegación entre pantallas)  
+- **json-server** (mock de base de datos usando `animales.json`)  
+- **CSS** (estilos personalizados y media queries)  
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 📂 Estructura de Carpetas
+src
+├── assets
+│ └── logo granja.png
+├── components
+│ ├── Encabezado/
+│ ├── FichaAnimal/
+│ ├── FormEditar/
+│ ├── FormularioAgregarAnimal/
+│ ├── json/animales.json
+│ └── Navbar/
+├── containers
+│ ├── Animals/
+│ ├── Home/
+│ ├── Login/
+│ └── Registro/
+├── routes/
+├── services/
+├── Styles/
+├── App.js
+├── index.js

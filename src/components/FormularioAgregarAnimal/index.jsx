@@ -283,7 +283,7 @@ function Index({ setAnimals }) {
 
         <button
           type="submit"
-          style={{ color: "blue", border: "2px solid", display: "flex" }}
+          style={{ color: "white", border: "2px solid", display: "flex" }}
         >
           Agregar Animal
         </button>

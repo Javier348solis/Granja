@@ -1,110 +1,181 @@
 /* --------------------------- */
-/* Navbar existente (lo dejé igual) */
+/* Navbar */
 /* --------------------------- */
 .navbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 20px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  padding: 16px 32px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   position: sticky;
   top: 0;
   z-index: 1000;
-  transition: background-color 0.3s, color 0.3s;
+  background-color: var(--navbar-bg) !important;
+  color: var(--text-color) !important;
+  transition: all var(--transition-time) ease;
 }
 
-.navbar.light {
-  background-color: #ffffff;
-  color: #000000;
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
-.navbar.dark {
-  background-color: #1f1f1f;
-  color: #ffffff;
+.navbar-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-color) !important;
 }
 
+/* Logo */
 .navbar-logo {
+  width: 50px;
   height: 50px;
+  object-fit: contain;
   cursor: pointer;
+  transition: transform 0.3s ease;
 }
 
+.navbar-logo:hover {
+  transform: scale(1.1);
+}
+
+/* Links */
 .navbar-links {
   display: flex;
   align-items: center;
+  gap: 20px;
 }
 
 .navbar-link {
-  margin: 0 12px;
   text-decoration: none;
+  font-size: 1rem;
   font-weight: 500;
-  transition: color 0.3s;
-}
-
-.navbar.light .navbar-link {
-  color: #000000;
-}
-
-.navbar.dark .navbar-link {
-  color: #ffffff;
-}
-
-.navbar-toggle {
-  padding: 6px 12px;
+  padding: 8px 16px;
   border-radius: 6px;
+  color: var(--text-color) !important;
+  transition: all 0.3s ease;
+}
+
+.navbar-link:hover {
+  background-color: var(--link-hover-bg) !important;
+  transform: translateY(-2px);
+}
+
+/* Toggle Button */
+.navbar-toggle {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background-color: var(--toggle-bg) !important;
+  color: var(--toggle-text) !important;
+}
+
+.navbar-toggle:hover {
+  transform: translateY(-2px);
+}
+
+/* Hamburger Menu */
+.navbar-hamburger {
+  display: none;
+  font-size: 1.5rem;
+  background: none;
   border: none;
   cursor: pointer;
-  font-weight: bold;
-  transition: all 0.3s;
+  color: var(--text-color) !important;
+  padding: 4px;
 }
 
-.navbar.light .navbar-toggle {
-  background-color: #ddd;
-  color: #000;
+.navbar-hamburger:focus {
+  outline: none;
 }
 
-.navbar.dark .navbar-toggle {
-  background-color: #333;
-  color: #fff;
+/* Theme Variables */
+:root {
+  --navbar-bg: #ffffff;
+  --text-color: #1a1a1a;
+  --link-hover-bg: #f0f0f0;
+  --toggle-bg: #e0e0e0;
+  --toggle-text: #1a1a1a;
+  --bg-color: #f9f9f9;
+  --transition-time: 0.3s;
 }
 
-/* Media Queries para responsive */
+html.dark {
+  --navbar-bg: #1a1a1a !important;
+  --text-color: #f0f0f0 !important;
+  --link-hover-bg: #333333 !important;
+  --toggle-bg: #333333 !important;
+  --toggle-text: #f0f0f0 !important;
+  --bg-color: #121212 !important;
+}
+
+html.light {
+  --navbar-bg: #ffffff !important;
+  --text-color: #1a1a1a !important;
+  --link-hover-bg: #f0f0f0 !important;
+  --toggle-bg: #e0e0e0 !important;
+  --toggle-text: #1a1a1a !important;
+  --bg-color: #f9f9f9 !important;
+}
+
+/* Global Theme Override */
+html {
+  background-color: var(--bg-color) !important;
+  color: var(--text-color) !important;
+  transition: all var(--transition-time) ease;
+}
+
+/* Media Queries */
 @media (max-width: 768px) {
+  .navbar-hamburger {
+    display: block;
+  }
+
   .navbar-links {
-    display: none; /* En móvil lo ocultamos, luego puedes agregar menú hamburguesa */
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--navbar-bg) !important;
+    padding: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+
+  .navbar-links.open {
+    display: flex;
+  }
+
+  .navbar-link {
+    padding: 12px;
+    text-align: center;
+    width: 100%;
+  }
+
+  .navbar-toggle.mobile-toggle {
+    display: block;
+    width: 100%;
+    margin-top: 8px;
+  }
+
+  .navbar-toggle.desktop-toggle {
+    display: none;
   }
 }
 
-/* --------------------------- */
-/* NUEVO: Estilos globales para dark / light */
-/* --------------------------- */
-body.light {
-  background-color: #f9f9f9; /* Fondo claro */
-  color: #111; /* Texto oscuro */
-  transition: background-color 0.3s, color 0.3s;
-}
+@media (min-width: 769px) {
+  .navbar-toggle.mobile-toggle {
+    display: none;
+  }
 
-body.dark {
-  background-color: #121212; /* Fondo oscuro */
-  color: #f5f5f5; /* Texto claro */
-  transition: background-color 0.3s, color 0.3s;
-}
-
-/* Links globales */
-body.light a {
-  color: #0077cc;
-}
-
-body.dark a {
-  color: #66aaff;
-}
-
-/* Botones globales */
-body.light button {
-  background-color: #e0e0e0;
-  color: #111;
-}
-
-body.dark button {
-  background-color: #333;
-  color: #f5f5f5;
+  .navbar-toggle.desktop-toggle {
+    display: block;
+  }
 }

@@ -49,7 +49,7 @@ const Login = () => {
             color: "#333",
           }}
         >
-          Login
+          Iniciar Sesión
         </h2>
 
         <form
@@ -59,7 +59,7 @@ const Login = () => {
           <input
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-            placeholder="Username"
+            placeholder="Usuario"
             required
             style={{
               padding: "12px",
@@ -76,7 +76,7 @@ const Login = () => {
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            placeholder="Password"
+            placeholder="Contraseña"
             required
             style={{
               padding: "12px",
