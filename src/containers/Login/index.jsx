@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 
 const Login = () => {
@@ -6,6 +6,12 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
+
+  // Si el usuario ya está logueado, redirigirlo automáticamente
+  useEffect(() => {
+    const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+    if (loggedInUser) navigate("/", { replace: true });
+  }, [navigate]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -15,7 +21,7 @@ const Login = () => {
     );
     if (user) {
       localStorage.setItem("loggedInUser", JSON.stringify(user));
-      navigate("/home"); // ✅ Redirige a Home
+      navigate("/", { replace: true }); // ✅ Redirige a Home
     } else {
       setError("Credenciales incorrectas");
     }
@@ -112,7 +118,7 @@ const Login = () => {
           <p style={{ fontSize: "14px", marginTop: "10px" }}>
             No tienes cuenta?{" "}
             <Link
-              to="/"
+              to="/registro"
               style={{
                 color: "#667eea",
                 textDecoration: "none",

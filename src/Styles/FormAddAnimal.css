@@ -17,6 +17,7 @@ form {
   display: flex;
   flex-direction: column;
   gap: 15px;
+  transition: all 0.3s ease;
 }
 
 /* Inputs y selects */
@@ -87,6 +88,8 @@ ul li {
   border-radius: 8px;
   margin-bottom: 6px;
   font-size: 14px;
+  color: #000;
+  transition: all 0.3s ease;
 }
 
 /* Imagen seleccionada */
@@ -99,4 +102,23 @@ img {
 
 img:hover {
   transform: scale(1.05);
+}
+
+/* 🔹 Modo oscuro */
+html.dark form {
+  background: rgba(30, 30, 30, 0.85);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+}
+
+html.dark form input,
+html.dark form select,
+html.dark form button {
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background-color: rgba(0, 0, 0, 0.3);
+  color: #f6f2f2;
+}
+
+html.dark ul li {
+  background: rgba(255, 255, 255, 0.1);
+  color: #f6f2f2;
 }

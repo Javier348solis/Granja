@@ -1,34 +1,51 @@
 import { createBrowserRouter, Navigate } from "react-router-dom";
 import Home from "../containers/Home";
-import Nabvar from "../components/Nabvar";
+import Navbar from "../components/Nabvar/index";
 import Animales from "../containers/Animals";
 import Login from "../containers/Login";
 import Registro from "../containers/Registro";
 
-// HOC para agregar Navbar
+// HOC para envolver cualquier página con el Navbar
 const withNavbar = (element) => (
   <div>
-    <Nabvar />
+    <Navbar />
     {element}
   </div>
 );
 
-// Protege rutas privadas (ej: Home, Animales)
-const PrivateRoute = ({ element }) => {
+// Componente de ruta privada
+const PrivateRoute = ({ children }) => {
+  // Verifica si hay usuario logueado en localStorage
   const user = JSON.parse(localStorage.getItem("loggedInUser"));
-  return user ? element : <Navigate to="/login" replace />;
+  if (!user) return <Navigate to="/login" replace />;
+  return children;
 };
 
+// Definición de rutas
 const router = createBrowserRouter([
-  { path: "/Registro", element: <Registro /> }, // Registro como página inicial
-  { path: "/login", element: <Login /> },
+  {
+    path: "/registro",
+    element: <Registro />,
+  },
+  {
+    path: "/login",
+    element: <Login />,
+  },
   {
     path: "/",
-    element: <PrivateRoute element={withNavbar(<Home />)} />,
+    element: (
+      <PrivateRoute>
+        {withNavbar(<Home />)}
+      </PrivateRoute>
+    ),
   },
   {
     path: "/animales",
-    element: <PrivateRoute element={withNavbar(<Animales />)} />,
+    element: (
+      <PrivateRoute>
+        {withNavbar(<Animales />)}
+      </PrivateRoute>
+    ),
   },
 ]);
 

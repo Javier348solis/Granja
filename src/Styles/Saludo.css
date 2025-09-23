@@ -1,0 +1,73 @@
+.saludo-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #1a2a44, #0d1b2c);
+  
+  overflow: hidden;
+}
+
+.saludo-container h1 {
+  font-size: 3rem;
+  font-weight: 900;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  text-shadow: 0 0 10px rgba(74, 144, 226, 0.7);
+  animation: slideAndFade 4s infinite ease-in-out;
+}
+
+.saludo-container p {
+  font-size: 1.2rem;
+  color: #e0e0e0;
+  margin-top: 15px;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+  animation: fadeInOut 5s infinite ease-in-out;
+}
+
+@keyframes slideAndFade {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  20% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  80% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+  .saludo-container h1 {
+    font-size: 2rem;
+  }
+
+  .saludo-container p {
+    font-size: 1rem;
+  }
+}
