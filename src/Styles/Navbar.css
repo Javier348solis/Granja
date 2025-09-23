@@ -1,0 +1,72 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.navbar.light {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.navbar.dark {
+  background-color: #1f1f1f;
+  color: #ffffff;
+}
+
+.navbar-logo {
+  height: 50px;
+  cursor: pointer;
+}
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-link {
+  margin: 0 12px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.navbar.light .navbar-link {
+  color: #000000;
+}
+
+.navbar.dark .navbar-link {
+  color: #ffffff;
+}
+
+.navbar-toggle {
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s;
+}
+
+.navbar.light .navbar-toggle {
+  background-color: #ddd;
+  color: #000;
+}
+
+.navbar.dark .navbar-toggle {
+  background-color: #333;
+  color: #fff;
+}
+
+/* Media Queries para responsive */
+@media (max-width: 768px) {
+  .navbar-links {
+    display: none; /* En móvil lo ocultamos, luego puedes agregar menú hamburguesa */
+  }
+}

@@ -1,19 +1,35 @@
-import { createBrowserRouter } from 'react-router-dom';
-import Home from '../containers/Home';
+import { createBrowserRouter, Navigate } from "react-router-dom";
+import Home from "../containers/Home";
 import Nabvar from "../components/Nabvar";
-import Animales from "../containers/Animals"
+import Animales from "../containers/Animals";
+import Login from "../containers/Login";
+import Registro from "../containers/Registro";
 
-const withNavbar = (element) => ([
+// HOC para agregar Navbar
+const withNavbar = (element) => (
   <div>
-    <Nabvar/>
+    <Nabvar />
     {element}
   </div>
-]);
+);
+
+// Protege rutas privadas (ej: Home, Animales)
+const PrivateRoute = ({ element }) => {
+  const user = JSON.parse(localStorage.getItem("loggedInUser"));
+  return user ? element : <Navigate to="/login" replace />;
+};
 
 const router = createBrowserRouter([
-  { path: '/', element: withNavbar(<Home />), },
-  { path: '/Animales', element: withNavbar(<Animales/>)}
-   
+  { path: "/", element: <Registro /> }, // Registro como página inicial
+  { path: "/login", element: <Login /> },
+  {
+    path: "/home",
+    element: <PrivateRoute element={withNavbar(<Home />)} />,
+  },
+  {
+    path: "/animales",
+    element: <PrivateRoute element={withNavbar(<Animales />)} />,
+  },
 ]);
 
-export default router;
+export default router;
