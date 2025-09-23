@@ -20,10 +20,10 @@ const PrivateRoute = ({ element }) => {
 };
 
 const router = createBrowserRouter([
-  { path: "/", element: <Registro /> }, // Registro como página inicial
+  { path: "/Registro", element: <Registro /> }, // Registro como página inicial
   { path: "/login", element: <Login /> },
   {
-    path: "/home",
+    path: "/",
     element: <PrivateRoute element={withNavbar(<Home />)} />,
   },
   {

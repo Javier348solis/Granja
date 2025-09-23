@@ -1,3 +1,6 @@
+/* --------------------------- */
+/* Navbar existente (lo dejé igual) */
+/* --------------------------- */
 .navbar {
   display: flex;
   align-items: center;
@@ -69,4 +72,39 @@
   .navbar-links {
     display: none; /* En móvil lo ocultamos, luego puedes agregar menú hamburguesa */
   }
+}
+
+/* --------------------------- */
+/* NUEVO: Estilos globales para dark / light */
+/* --------------------------- */
+body.light {
+  background-color: #f9f9f9; /* Fondo claro */
+  color: #111; /* Texto oscuro */
+  transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark {
+  background-color: #121212; /* Fondo oscuro */
+  color: #f5f5f5; /* Texto claro */
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Links globales */
+body.light a {
+  color: #0077cc;
+}
+
+body.dark a {
+  color: #66aaff;
+}
+
+/* Botones globales */
+body.light button {
+  background-color: #e0e0e0;
+  color: #111;
+}
+
+body.dark button {
+  background-color: #333;
+  color: #f5f5f5;
 }

@@ -1,0 +1,47 @@
+/* Card profesional */
+.ficha-card {
+  width: 300px;
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  margin: 10px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s;
+}
+
+.ficha-card:hover {
+  transform: translateY(-5px);
+}
+
+.ficha-header {
+  text-align: center;
+}
+
+.ficha-image {
+  width: 100%;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+.ficha-body {
+  margin-top: 15px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.ficha-edit-btn {
+  margin-top: 15px;
+  padding: 8px 12px;
+  background-color: #0077b6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.ficha-edit-btn:hover {
+  background-color: #023e8a;
+}

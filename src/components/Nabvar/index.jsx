@@ -1,60 +1,34 @@
-import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import logoImg from "../../assets/logo granja.png"; // Cambia por tu logo real
-import "./Nabvar.css"; // Archivo CSS
+// src/components/Nabvar/index.jsx
+import React from "react";
+import { Link, useOutletContext } from "react-router-dom";
+import "../../Styles/Navbar.css";
+import logo from "../../assets/logo granja.png"; // tu logo
 
-const Nabvar = () => {
-  const navigate = useNavigate();
-  const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
-
-  const [darkMode, setDarkMode] = useState(() => {
-    const saved = localStorage.getItem("darkMode");
-    return saved ? JSON.parse(saved) : false;
-  });
-
-  useEffect(() => {
-    localStorage.setItem("darkMode", JSON.stringify(darkMode));
-    document.body.style.backgroundColor = darkMode ? "#121212" : "#f5f5f5";
-  }, [darkMode]);
-
-  const toggleDarkMode = () => setDarkMode(!darkMode);
+const Navbar = () => {
+  const { darkMode, setDarkMode } = useOutletContext() || {};
 
   return (
-    <nav className={`navbar ${darkMode ? "dark" : "light"}`}>
+    <nav className="navbar">
       {/* Logo */}
-      <img
-        src={logoImg}
-        alt="Logo"
-        className="navbar-logo"
-        onClick={() => navigate("/")}
-      />
+      <Link to="/" className="navbar-logo">
+        <img src={logo} alt="Logo" />
+      </Link>
 
       {/* Links */}
       <div className="navbar-links">
-        <Link to="/" className="navbar-link">
-          Inicio
-        </Link>
-        <Link to="/Animales" className="navbar-link">
-          Animales
-        </Link>
-        {!loggedInUser && (
-          <>
-            <Link to="/login" className="navbar-link">
-              Login
-            </Link>
-            <Link to="/register" className="navbar-link">
-              Registro
-            </Link>
-          </>
-        )}
+        <Link to="/">Inicio</Link>
+        <Link to="/animales">Animales</Link>
       </div>
 
-      {/* Toggle de modo oscuro */}
-      <button className="navbar-toggle" onClick={toggleDarkMode}>
-        {darkMode ? "Claro ☀️" : "Oscuro 🌙"}
+      {/* Toggle */}
+      <button
+        className="theme-toggle"
+        onClick={() => setDarkMode(!darkMode)}
+      >
+        {darkMode ? "🌙" : "☀️"}
       </button>
     </nav>
   );
 };
 
-export default Nabvar;
+export default Navbar;

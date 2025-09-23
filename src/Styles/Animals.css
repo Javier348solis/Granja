@@ -1,0 +1,44 @@
+.animals-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.animals-title {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #0077b6;
+  text-align: center;
+}
+
+.carousel {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  justify-content: center;
+}
+
+.carousel-card {
+  flex: 0 0 300px;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 0.5s, transform 0.5s;
+  margin: 0 10px;
+}
+
+.carousel-card.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  .carousel {
+    flex-direction: column;
+    align-items: center;
+  }
+  .carousel-card {
+    margin: 10px 0;
+  }
+}
